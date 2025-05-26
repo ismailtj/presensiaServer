@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emargements",
+  "info": {
+    "singularName": "emargement",
+    "pluralName": "emargements",
+    "displayName": "Emargement",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "pointage": {
+      "type": "datetime"
+    },
+    "seance": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::seance.seance"
+    },
+    "eleve": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
