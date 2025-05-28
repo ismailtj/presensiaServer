@@ -4,28 +4,31 @@
   "info": {
     "singularName": "seance",
     "pluralName": "seances",
-    "displayName": "seance"
+    "displayName": "seance",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "debut": {
-      "type": "datetime"
-    },
-    "fin": {
-      "type": "datetime"
-    },
-    "groups": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::group.group",
-      "mappedBy": "seance"
-    },
     "module": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::module.module"
+    },
+    "group": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::group.group"
+    },
+    "Date": {
+      "type": "date"
+    },
+    "debut": {
+      "type": "time"
+    },
+    "fin": {
+      "type": "time"
     }
   }
 }

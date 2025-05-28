@@ -422,14 +422,23 @@ export interface ApiGroupGroup extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    delegue: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
+    delegue: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    eleves: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::group.group'> &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    responsable: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
-    seance: Schema.Attribute.Relation<'manyToOne', 'api::seance.seance'>;
+    responsable: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -471,6 +480,7 @@ export interface ApiModuleModule extends Struct.CollectionTypeSchema {
 export interface ApiSeanceSeance extends Struct.CollectionTypeSchema {
   collectionName: 'seances';
   info: {
+    description: '';
     displayName: 'seance';
     pluralName: 'seances';
     singularName: 'seance';
@@ -482,9 +492,10 @@ export interface ApiSeanceSeance extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    debut: Schema.Attribute.DateTime;
-    fin: Schema.Attribute.DateTime;
-    groups: Schema.Attribute.Relation<'oneToMany', 'api::group.group'>;
+    Date: Schema.Attribute.Date;
+    debut: Schema.Attribute.Time;
+    fin: Schema.Attribute.Time;
+    group: Schema.Attribute.Relation<'oneToOne', 'api::group.group'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

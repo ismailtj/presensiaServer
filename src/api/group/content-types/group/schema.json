@@ -17,18 +17,17 @@
     "responsable": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "admin::user"
+      "target": "plugin::users-permissions.user"
     },
     "delegue": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "admin::user"
+      "target": "plugin::users-permissions.user"
     },
-    "seance": {
+    "eleves": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::seance.seance",
-      "inversedBy": "groups"
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
